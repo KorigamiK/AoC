@@ -44,18 +44,12 @@ def main_2():
         opponent, player = line.split()
         opponent_hand = get_oponent(opponent)
         game_outcome = get_player(player)  # 1 - loss, 2 - draw, 3 - win
-        player_hand: int
-        if game_outcome == 1:
-            player_hand = (opponent_hand + 1) % 3 + 1
-        elif game_outcome == 2:
-            player_hand = opponent_hand
-            score += 3
-        else:
-            player_hand = (opponent_hand - 1) % 3 + 1
-            score += 6
 
-        print(opponent_hand, player_hand, game_outcome)
+        player_hand = (opponent_hand - 1 + (game_outcome - 2)) % 3 + 1
         score += player_hand
+        score += (game_outcome - 1) * 3
+        print(f"{opponent_hand=} {player_hand=} {game_outcome=}")
+        print(f"{score=}")
 
     printf(score)
 
@@ -75,7 +69,7 @@ def get_outcome(player: int, opponent: int) -> int:
 if __name__ == "__main__":
     printf = print
 
-    def print(*_):
-        ...
-
+    # def print(*_):
+    #     ...
+    #
     main_2()
