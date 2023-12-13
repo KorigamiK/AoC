@@ -21,13 +21,11 @@ fn main() -> io::Result<()> {
 
     let sum = numbers_only.into_iter().fold(0, |acc, x| {
         // sum the first
-        println!("{} {}", x.first().unwrap(), x.last().unwrap());
+        eprintln!("{} {}", x.first().unwrap(), x.last().unwrap());
         acc + x.first().unwrap().to_digit(10).unwrap() + x.last().unwrap().to_digit(10).unwrap()
     });
 
     println!("{}", sum);
-
-    // print the input
 
     Ok(())
 }
