@@ -21,7 +21,7 @@ fn part_1(input: &str) {
     for x in 0..array.len() {
         let mut s: i32 = -1;
         for y in 0..array.first().unwrap().len() {
-            match array[x][y].is_digit(10) {
+            match array[x][y].is_ascii_digit() {
                 true => {
                     if s == -1 {
                         s = y as i32;
@@ -57,7 +57,7 @@ fn part_1(input: &str) {
                             true
                         };
 
-                        let down = if array.in_bounds(x as i32 + 1, s as i32) {
+                        let down = if array.in_bounds(x as i32 + 1, s) {
                             let mut ans = true;
                                 println!("{x} {y}");
                             for i in array[x + 1][s as usize..y].iter() {
